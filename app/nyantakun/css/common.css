@@ -1,0 +1,214 @@
+@charset "shift_jis";
+
+html{
+    background:#eeeeee;
+}
+
+body{
+	font-family:'Lucida Grande',
+ 	'Hiragino Kaku Gothic ProN', '�q���M�m�p�S ProN W3',
+ 	Meiryo, sans-serif;
+}
+
+header{
+    height: 60px;
+    background: #fecc00;
+    line-height: 60px;
+    color: #000;
+    text-align: center;
+    font-family:'Verdana';
+    font-size: 26px;
+
+}
+
+.description h1,.description h2{
+    text-align: left;
+}
+
+.help h1,.help h2{
+
+    text-align: center;
+}
+
+h2{
+    color: #333;
+}
+
+.helpBlock{
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+
+
+.descriptionBlock{
+    margin-bottom: 40px;
+}
+
+
+p.imgHelp{
+
+    margin-bottom: 5px;
+}
+
+p.imgHelp img{
+    padding: 1px;
+    border: solid 1px #ccc;
+}
+
+.mainImage{
+    overflow: hidden;
+    width: 100%;
+    height: 600px;
+}
+
+
+.contents h1{
+    margin: 0 0 30px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.contents h2{
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.contents h3{
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.contents p{
+    font-size: 13px;
+    color: #666666;
+}
+
+.downLoad{
+    height: 40px;
+    background:#999;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+
+}
+
+.downLoad a{
+    color: #fff;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.downLoad a:hover{
+
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.fs-12{
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+footer{
+    border-top:1px solid #cccccc;
+    padding: 20px 0 100px 0;
+    font-size: 12px;
+}
+
+.hNav{
+    padding: 0 60px 0 0 ;
+    font-size: 14px;
+}
+
+.hNavR{
+    padding: 0 0 0 60px ;
+    font-size: 14px;
+}
+
+*{
+	margin: 0;
+}
+
+img{
+	border:0;
+}
+.contents {
+    width:1000px;
+    margin: 0 auto;
+    padding: 30px 0 0 0;
+}
+
+.contents .innter{
+    padding: 0 10px;
+}
+
+.align-left{
+    text-align: left;
+}
+
+.red {
+  color: red  !important;
+}
+
+.contentsDescription{
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.contentsBorder{
+  border: solid 1px #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.contentsCenter{
+  flex: 1;
+}
+
+.contentsLeft p {
+  padding: 2px 5px;
+  background: #4583B1;
+  color: #fff;
+  font-size: 60%;
+}
+
+.contentsBorder a{
+  text-decoration: none;
+}
+
+.contentsBorder h2{
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.contentsRight p{
+  font-size: 70%;
+  color: #999;
+}
+
+.contentsRight{
+  width: 100px;
+  text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+    .contents {
+        width:90%;
+        margin: 0 auto;
+        padding: 30px 0 0 0;
+    }
+}
+
+.smallText {
+    font-size: 10px;
+}
+
+#news p.middleText {
+    font-size: 11px;
+}

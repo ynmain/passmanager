@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>パスマネージャー</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="keywords" content="パスマネージャー,パスワード">
+    <meta name="description" content="パスマネージャー">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.16.0-rc-1/build/cssreset/cssreset-min.css">
+    <link rel="stylesheet" href="css/common.css" type="text/css" media="all">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style type="text/css">
+
+        .help h2{
+            font-weight: normal;
+            font-size: 20px;
+
+        }
+
+        .curled-box{
+            display: inline-block;
+            position: relative;
+            border-radius: 50%;
+            height: 10px;
+            width: 10px;
+            background: #787878;
+
+        }
+
+        .curled-box .space{
+            position: absolute;
+            border-radius: 50%;
+            height: 6px;
+            width: 6px;
+            left: 50%;
+            top: 50%;
+            margin-left: -3px;
+            margin-top: -3px;
+            background: #EDEBDF;
+        }
+
+        .h2Line{
+            background: #787878;
+            width: 100%;
+            height: 2px;
+            margin-bottom: 30px;
+        }
+
+        .faqArea{
+            padding-bottom: 40px;
+            margin-bottom:  40px;
+            border-bottom:1px dotted #aaa;
+        }
+
+        .faqArea dt{
+            position: relative;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .faqArea dd{
+            font-size: 12px;
+        }
+
+        .faqArea .q{
+            background: #787878;
+        }
+
+        .faqArea .a{
+            background: #aaa;
+        }
+
+        .faqArea .q,.faqArea .a{
+            position: absolute;
+            display: inline-block;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+
+            font-size: 14px;
+            color: #fff;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .faqAreaSize100{
+            width: 100%;
+        }
+
+        .faqAreaSize60{
+            width: 60%;
+        }
+
+        .faqAreaSize36{
+            width: 36%;
+        }
+
+        .faqArea .text{
+            float: left;
+            width: 30px;
+            padding: 4px 0 0 0;
+            text-align: center;
+        }
+
+        .faqArea .copy{
+            margin: 2px 0 0 40px;
+            display: inline-block;
+        }
+
+
+        .item{
+            display: inline-block;
+        }
+
+
+    </style>
+
+
+</head>
+
+
+
+
+<body>
+<div class="wrap">
+
+    <div class="contents help">
+        <div class="innter">
+            <h2>
+                <div class="curled-box">
+                    <div class="space"></div>
+                </div>
+            ヘルプ
+            </h2>
+    </div>
+    <div class="h2Line"></div>
+
+
+
+
+        <!--<dl class="faqArea">-->
+            <!--<div class="item faqAreaSize60">-->
+                <!--<dt><span class="q"><span class="text">Q</span></span><span class="copy">バーコードから賞味期限を登録する方法は？</span></dt>-->
+                <!--<dd><span class="a"><span class="text">A</span></span><span class="copy">これはこうです</span></dd>-->
+            <!--</div>-->
+            <!--<div class="image faqAreaSize36"><img src="images/img_photo_1.gif" width="90" height="90">-->
+            <!--</div>-->
+        <!--</dl>-->
+        <!-- <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">トップ画面からパスワードがコピーできない</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">現在不具合対応してAppleに審査提出中です。今週か来週に修正される予定です。必ず良いものにするので温かい目で見守ってください。</span></dd>
+            </div>
+        </dl>
+
+ -->
+ <!-- <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">今後の更新にについて</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">
+           今後のアップデートはしばらく行わないことに決めました。<br>
+           先日のアップデートから心無いレビューや中傷的なメールが多く非常に憤りを感じております。現時点でアップストアへ出ている無料のパスワード管理の中ではどう考えても高機能な部類に入ります。
+           毎日使用しているにもかかわらず気分で星を一つにしてみたり、自分の思い通りにいかないからといって酷いクレームを入れたり。<br>
+           開発者としてこのアプリを本当に作り続けてよいのか疑問を感じました。
+         </span></dd>
+     </div>
+ </dl> -->
+ <dl class="faqArea" id="a1">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">カテゴリーは階層化できませんか？</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">可能です。カテゴリ一覧画面から簡単に子カテゴリを作ることが可能です。
+           <a href="https://note.mu/passmanager/n/ndba6d646992e" target="_blank">こちら</a>　にまとめました。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea" id="a1">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">課金のステータスを知りたい</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">Top画面の上部を確認ください。無課金の場合「レギュラー会員」と記載があります。以前課金したかどうかわからない場合は、必ずアップルからメールが届いているはずなので、
+           過去のメールを確認ください。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea" id="a1">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">以前課金したと思うが登録の制限がかかる</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">2018年8月以前のバリュー会員の場合、アイコン自由選択へ課金するとプレミアム会員へ昇格します。以前と格段に機能の向上をしており料金体系が異なります。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea" id="a1">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">プラチナユーザー（月額課金）解約後について</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">
+           解約後はレギュラーユーザーに戻ります。プレミアムからプラチナへアップグレード後にプラチナユーザーを解約後一旦レギュラーユーザーに戻りますが、リストアを押すとプレミアムユーザーになります。
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea" id="a1">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">一定数パスワード登録すると課金制限がかかる</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">
+           動画広告を閲覧すると無料でパスワード登録できます。プレミアムユーザー、またはプラチナユーザーへの課金が
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea" id="a1">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">Android版はありますか</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">あります。<br>
+           GooglePlayStoreで「パスマネ 指紋認証」で検索すると2番目に来ます。または下記でダウンロード<br>
+           <a href="https://play.google.com/store/apps/details?id=jp.boy.lab.passmanager" target="_blank">ダウンロードはこちら</a>
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea" id="a1">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">開発者がセキュリティやデータの保持についてどう考えているか？</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">こちらiPhoneのサンドボックス内のみでデータの保存等を行っています。マーケティング等使用するための
+           情報収集は一切していません。<br>ただし、クラッシュリティクス、Analyticsという機構を採用しており、ユーザーになにか問題が起きたとき（アプリが起動しなくなるなど）のみログが届くようになっています。そのログに個人情報は一切届きません。
+           一日にどのくらいのユーザーが使用しているかなどは把握しています。これはどうしてもヘルプやお知らせ部分などに使用しているホスティングの負荷などを確認する必要が有るため収集しています。
+           そのためユーザーから問い合わせで誤ってデータを消してしまったから復元して欲しいという
+           要望がよく来るのですが、良くも悪くも開発者は一切知りません。ユーザーの端末かiCloudにしかデータは無いため。
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea" id="a2">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">iPhoneとiPad間でデータの転送を行いたい</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">設定→端末同士で通信するを選択
+         <br>
+         BluetoothとWifiをオンにする「まず他のiPhoneと通信できるようにする」をタップ。<br><br>
+         ペアリング（接続する）をおす。<br>
+         現在のデータを活かすか、追加するか選択し転送する。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">機種変更して新しいiPhoneにしたい</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">いくつか方法がありますが、一例として。アプリの設定から「パスワードをバックアップ・復元する」をタップ。<br>一旦バックアップを取る。
+           その後新しいiPhoneで設定から復元を押す。するとバックアップからデータを引き出すことができます。その後課金していた場合、課金画面よりリストアというボタンを押すと無事引っ越し完了です。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea" id="a3">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードの品質管理をしたい</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">設定→パスワードの経過表示をオン<br>
+           トップ画面にパスワードが作られて今日までの日数が表示されます。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">課金後、機能が反映されない</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">一旦アプリを再起動してください。<br>それでも反映されない場合は課金画面から「リストア」を押してください。
+           それでも反映されない場合、もう一度課金ボタンをおして、アプリを再起動してください。<br><br>この操作で２重に課金されることはありません。<br>
+           （追記）ただし1度でも2018年8月以前に課金した方は絶対に課金ボタンを押さないでください。8月以前と現在課金の内容が異なるため。
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">新機能CSV読み込み機能の使い方(v2.9.0以降 iOS11以降対応)</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能は設定から書き出したファイルを読み込めるようになります。
+         <br>
+         注意点は画像の保存まではできないです。理由としてCSVファイルに画像を書き込むことは不可です。<br><br>
+         さらにiOS11以降でないと読み込むことはできません。<br>
+         操作は設定から行えます。<br>
+         他のアプリでエクスポートしたデータをGoogleスプレッドシートというアプリでフォーマットどおりに入力すると読み込むことが可能です。<br><br>
+         フォーマットの確認は一旦設定から現時点のデータを書き出してみてください。そのファイルをGoogleスプレッドシートで開き確認ください。<br>
+         なお手入力する際はID部分にユニークな文字を入れてください。例えばa1,a2など。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea" id="safari">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">新機能Safariから自動ログイン機能(v2.7.2以降)</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能はサファリからパスマネの情報を呼び出し自動でパスワードを入力する機能です。
+         <br>
+         使い方は簡単。サファリの下部分真ん中のアイコンをタップ。更に下部分のアイコンから「その他」を選択。<br><br>
+         「パスマネ」で自動入力をスイッチオン。あとはログイン画面まで進めば自動で簡単にパスマネで登録したパスワードを呼び出すことが可能です。<br><br>
+         詳しくは下の動画を御覧ください。手順はGoogleで「Safari AppExtension 使い方」で検索。<br><br>
+         【　注意　】現時点でバリューパックを購入済みの方は再度課金ボタンを押してください。機能が追加されます。<br>
+         二重課金は行われません。<br>
+         <iframe width="100%" src="https://www.youtube.com/embed/OCW_PwezPNM" frameborder="0" allowfullscreen></iframe><br><br>
+
+         オートログイン対応サイト一覧<br><br>
+         [ 現時点で自動ログインが可能なサイト ]<br>
+  ジャックス,三菱東京UFJ,楽天<br>
+  セゾンカードネットアンサー,フェイスブック<br>
+  ヤフオク,ヤフー ,住信SBIネット銀行,Honto,FC2<br>
+  SimpleNote,食べログ（価格コムID）,ドットインストール<br>
+  アースカーシェア,Amazon,Backlog,スタンパーズ<br>
+  ANA,JAL,Twitter,楽天,東京三菱銀行,げんだま,ハピタス<br>
+  その他　未調査 できるものとできないものがあります。追加してほしい場合は下記お問合わせから。
+
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">二重課金されてない？</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">このアプリは買いきりで同じ課金項目は一度しか課金されません。
+         <br>
+         注意点は、はじめに広告を課金して使い勝手がよかったからプレミアム会員へ課金した場合は、広告分は返金できません。<br><br>
+         プレミアム課金はまとめて購入していただくことで安くなるセット価格のため。<br><br>
+         あとバリューパックの課金後にプレミアムを押すと別途課金されるので注意してください。
+         購入したときの手順通り購入してください。例えばバリュー会員を購入後アイコン開放の課金をした場合はそのように。<br><br>
+         された場合は同じアカウントで同じ課金がされた明細を添付してメールください。<br>
+         （追記）ただし1度でも2018年8月以前に課金した方は絶対に課金ボタンを押さないでください。8月以前と現在課金の内容が異なるため。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">オートログインを使いたい(Safari含む)</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">オートログインとはIDとパスワードを予め登録しておくと次回からワンボタンで入力無しでログイン出来る機能です。
+         <br>IDとパスワード入力します。その後URL欄にログイン画面のURLを設定します。すると次回から「サイトへ」のボタンを押すと自動でログインすることが出来ます。<br><br>
+       オートログイン対応サイト一覧<br><br>
+       [ 現時点で自動ログインが可能なサイト ]<br>
+ジャックス,三菱東京UFJ,楽天<br>
+セゾンカードネットアンサー,フェイスブック<br>
+ヤフオク,ヤフー ,住信SBIネット銀行,Honto,FC2<br>
+SimpleNote,食べログ（価格コムID）,ドットインストール<br>
+アースカーシェア,Amazon,Backlog,スタンパーズ<br>
+ANA,JAL,Twitter,楽天,東京三菱銀行,げんだま,ハピタス<br>
+その他　未調査 できるものとできないものがあります。追加してほしい場合は下記お問合わせから。
+     </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">バージョン2.8.0でiCloud復元でクラッシュする</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">バージョン2.8.0で本体内部がリニューアルされ、構造が大きく変わっています。<br>
+           このことから古いバージョンから復元するとクラッシュしてしまうケースが有るようです。<br><br>
+           対処法としては一旦バージョン2.8.0で設定からバックアップを取ってください。その後復元をお願い致します。
+     </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">設定からiCloud保存でずっと読み込み中または何も起こらない</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhone本体の設定上部「AppleID」(ユーザー画像部分)をタップ
+         <br>
+         →iCloudをタップ→ここでiCloudがパスマネにcheckが入っているか確認。その前に同画面の「iCloud Drive」のスイッチが入っているかどうか？確認ください。<br>
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">課金中にずっと読み込み中</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhoneを再起動、アプリを再起動。アップルのアカウントを一度ログアウトしてログイン。<br><br>
+           その後、リストアではなく再度課金ボタンを押してください。この際課金は重複されません。<br><br>これでも解決しない場合、課金画面の課金を上から順に一つづつ課金ボタンを押し、最終的な課金ボタンは押さずキャンセルしてください。
+           ここで「課金がキャンセルされました」と出たら、もう一度目的の課金ボタンを押してください。
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">課金したのに反映されない</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">稀に即反映されない場合があります。対応として、アプリ再起動、iPhone再起動。<br>
+           改善しない場合は「リストア」ではなく再度課金ボタンを押す。ここで2重課金はされません。<br>
+           （追記）ただし1度でも2018年8月以前に課金した方は絶対に課金ボタンを押さないでください。8月以前と現在課金の内容が異なるため。
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードをコピーすると落ちる</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhoneの「設定」から「一般」→「日付と時刻」を24時間に変更してください。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードを消してしまった復元してほしい</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">残念ながらバックアップがない場合は不可能です。
+           客様のデータについて開発者は一切関与しません。<br>復元できる場合は保持している状態なので復元はできません。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードが消えてしまった？</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">カテゴリーの「すべて」に存在する可能性がございます。一度ご確認ください。<br>
+           またはversion2.4.0でクラッシュが連発して開けなくなっていたという状態であれば「設定」から「パスワードのエクスポート」で「v2.3.5以前のデータを抽出」いただければ<br>
+           抽出が可能です。(クラッシュ対象ユーザーのみ。アプリを削除してしまったら不可)
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">指紋認証ができなくなった</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">原因として何度か指紋認証に失敗し認証できなくなった状態です。<br>
+           iPhoneの設定から「Touch IDとパスコード」から指紋を再登録お願い致します。
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードの並べ替えがしたい</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">トップ左上の「並べ替え」から行えます。
+         </span></dd>
+     </div>
+ </dl>
+
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">CSVがエクスポートできない</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">一旦設定から「起動時にパスコードを求める」をオフにしてください。<br>
+           するとメーラーが立ち上がりエクスポートができるようになります。<br>エクスポートには必ず指紋認証が必要になります。<br>必ず本体の設定から指紋を登録しお試しください。<br>
+           「パスマネでtouchIDを使用」と出たら指紋をホームボタンへ押し当ててください。
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">CSVがエクセルで開くと文字化けする</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">Googleのスプレッドシートをお使いただけるようよろしくお願いします。その後エクセル形式で吐き出していただければお使いいただけます。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">検索の使い方</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能は素早くパスワードを検索することができます。
+           検索窓に文字をいれ右下の確定ボタンを押してください。例えば「アマゾン」というパスワードがあったら「ア」でも絞り込まれます。<br>
+           検索を行う場合はすべてのパスワードから絞り込まれる仕様になります。
+         </span></dd>
+     </div>
+ </dl>
+        <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">新機能「お気に入り」の使い方（ハートマーク）</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能はiPhoneの通知センターよりアプリを起動しなくてもパスワードをコピーすることができる便利な機能です。
+                <br>
+                使い方は簡単。アプリの上部から「通知センター」を呼び出します。呼び出したら一番下の「編集」をタップします。<br>
+                そこでpassmanagerLikeListを追加追加します。<br>
+                これでいつでも通知センターよりお気に入りを呼び出すことができます。<br><br>
+                <iframe width="100%" src="https://www.youtube.com/embed/Yv56MRWxyRU" frameborder="0" allowfullscreen></iframe>
+                </span></dd>
+            </div>
+        </dl>
+
+        <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">登録したパスワードの編集ってどうするの？</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">パスワードが並んでいる画面の登録した名前あたりをタップしてください。
+                  <br>すると詳細画面へ移動します。<br><br>
+                <iframe width="100%" src="https://www.youtube.com/embed/1D9tgOr4bT0" frameborder="0" allowfullscreen></iframe>
+                </span></dd>
+            </div>
+        </dl>
+
+        <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードの行を長押しで簡単オートログイン</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">オートログイン機能は簡単に実行する事が出来ます。
+                  予めIDとパスワードとURLをセットします。<br>
+                  パスワード一覧画面（Top画面）でパスワードの行を長押しするとワンボタンでオートログインすることが出来ます。
+                </span></dd>
+            </div>
+        </dl>
+
+        <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードをバックアップしたい</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhoneやiPadはiCloudをオンにしておくと常にバックアップされた状態になります。
+                  こまめにバックアップをしておくことを推奨します。設定→iCloud→バックアップ<br>
+                  復元の方法は？<br>
+                  新しいiPhoneを購入した際にセットアップ画面でiCloudから復元という項目を押すと簡単にパスマネージャーの状態も復元することが出来ます。
+                </span></dd>
+            </div>
+        </dl>
+        <p style=color:red>日々お問い合わせが来る中、暴言や配慮のない文章や喧嘩腰な方、気分を害する内容など様々なメールが届きます。開発者も一人の人間となります。<br><br>
+          更にアプリのサポート以外のスマホの基本的な使い方などはお答えしかねます。<br>基本的に開発者のメンタル面が非常に弱い為上記個人的に判断した場合は一切返信されない旨ご協力のほど何卒よろしくお願いします。</p>
+        <p class="downLoad"><a
+                href="mailto:&#121;&#110;&#46;&#109;&#97;&#105;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;?subject=パスマネージャへーのお問い合わせ:&amp;body=ご質問内容">お問い合わせ</a>
+        </p>
+
+        <!--<p class="downLoad"><a href="https://itunes.apple.com/us/app/bakodode-jian-danni-shang/id901107971?mt=8" target="_blank">アプリのダウンロード</a>-->
+        </p>
+
+        <footer>© Nyantaro Apps./ Yosuke Nakayama</footer>
+        <br><br><br><br><br><br><br><br>
+
+
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="passmanager/js/common.js"></script>
+</body>
+</html>

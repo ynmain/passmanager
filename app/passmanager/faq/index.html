@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>パスマネージャー</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="keywords" content="パスマネージャー,パスワード">
+    <meta name="description" content="パスマネージャー">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.16.0-rc-1/build/cssreset/cssreset-min.css">
+    <link rel="stylesheet" href="css/common.css" type="text/css" media="all">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style type="text/css">
+
+        .help h2{
+            font-weight: normal;
+            font-size: 20px;
+
+        }
+
+        .curled-box{
+            display: inline-block;
+            position: relative;
+            border-radius: 50%;
+            height: 10px;
+            width: 10px;
+            background: #787878;
+
+        }
+
+        .curled-box .space{
+            position: absolute;
+            border-radius: 50%;
+            height: 6px;
+            width: 6px;
+            left: 50%;
+            top: 50%;
+            margin-left: -3px;
+            margin-top: -3px;
+            background: #EDEBDF;
+        }
+
+        .h2Line{
+            background: #787878;
+            width: 100%;
+            height: 2px;
+            margin-bottom: 30px;
+        }
+
+        .faqArea{
+            padding-bottom: 40px;
+            margin-bottom:  40px;
+            border-bottom:1px dotted #aaa;
+        }
+
+        .faqArea dt{
+            position: relative;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .faqArea dd{
+            font-size: 12px;
+        }
+
+        .faqArea .q{
+            background: #787878;
+        }
+
+        .faqArea .a{
+            background: #aaa;
+        }
+
+        .faqArea .q,.faqArea .a{
+            position: absolute;
+            display: inline-block;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+
+            font-size: 14px;
+            color: #fff;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .faqAreaSize100{
+            width: 100%;
+        }
+
+        .faqAreaSize60{
+            width: 60%;
+        }
+
+        .faqAreaSize36{
+            width: 36%;
+        }
+
+        .faqArea .text{
+            float: left;
+            width: 30px;
+            padding: 4px 0 0 0;
+            text-align: center;
+        }
+
+        .faqArea .copy{
+            margin: 2px 0 0 40px;
+            display: inline-block;
+        }
+
+
+        .item{
+            display: inline-block;
+        }
+
+
+    </style>
+
+
+</head>
+
+
+
+
+<body>
+<div class="wrap">
+
+    <div class="contents help">
+        <div class="innter">
+            <h2>
+                <div class="curled-box">
+                    <div class="space"></div>
+                </div>
+            ヘルプ
+            </h2>
+    </div>
+    <div class="h2Line"></div>
+
+
+
+
+        <!--<dl class="faqArea">-->
+            <!--<div class="item faqAreaSize60">-->
+                <!--<dt><span class="q"><span class="text">Q</span></span><span class="copy">バーコードから賞味期限を登録する方法は？</span></dt>-->
+                <!--<dd><span class="a"><span class="text">A</span></span><span class="copy">これはこうです</span></dd>-->
+            <!--</div>-->
+            <!--<div class="image faqAreaSize36"><img src="images/img_photo_1.gif" width="90" height="90">-->
+            <!--</div>-->
+        <!--</dl>-->
+        <!-- <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">トップ画面からパスワードがコピーできない</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">現在不具合対応してAppleに審査提出中です。今週か来週に修正される予定です。必ず良いものにするので温かい目で見守ってください。</span></dd>
+            </div>
+        </dl>
+
+ -->
+ <!-- <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">今後の更新にについて</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">
+           今後のアップデートはしばらく行わないことに決めました。<br>
+           先日のアップデートから心無いレビューや中傷的なメールが多く非常に憤りを感じております。現時点でアップストアへ出ている無料のパスワード管理の中ではどう考えても高機能な部類に入ります。
+           毎日使用しているにもかかわらず気分で星を一つにしてみたり、自分の思い通りにいかないからといって酷いクレームを入れたり。<br>
+           開発者としてこのアプリを本当に作り続けてよいのか疑問を感じました。
+         </span></dd>
+     </div>
+ </dl> -->
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">Safariから自動ログイン機能</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能はサファリからパスマネの情報を呼び出し自動でパスワードを入力する機能です。
+         <br>
+        使い方は簡単。サファリの下部分真ん中のアイコンをタップ。更に下部分のアイコンから「その他」を選択。<br><br>
+         「パスマネ」で自動入力をスイッチオン。あとはログイン画面まで進めば自動で簡単にパスマネで登録したパスワードを呼び出すことが可能です。<br><br>
+         詳しくは下の動画を御覧ください。手順はGoogleで「Safari AppExtension 使い方」で検索。<br><br>
+         <iframe width="100%" src="https://www.youtube.com/embed/OCW_PwezPNM" frameborder="0" allowfullscreen></iframe>         
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">機種変更して新しいiPhoneにしたい</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">いくつか方法がありますが、一例として。アプリの設定から「パスワードをバックアップ・復元する」をタップ。<br>一旦バックアップを取る。
+           その後新しいiPhoneで設定から復元を押す。するとバックアップからデータを引き出すことができます。その後課金していた場合、課金画面よりリストアというボタンを押すと無事引っ越し完了です。
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">設定からiCloud保存でずっと読み込み中</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhone本体の設定上部「AppleID」(ユーザー画像部分)をタップ
+         <br>
+         →iCloudをタップ→ここでiCloudがパスマネにcheckが入っているか確認<br>
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードをコピーすると落ちる</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhoneの「設定」から「一般」→「日付と時刻」を24時間に変更してください。
+           ※現在対応中次回アップデートで修復します。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードが消えてしまった？</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">カテゴリーの「すべて」に存在する可能性がございます。一度ご確認ください。<br>
+           またはversion2.4.0でクラッシュが連発して開けなくなっていたという状態であれば「設定」から「パスワードのエクスポート」で「v2.3.5以前のデータを抽出」いただければ<br>
+           抽出が可能です。(クラッシュ対象ユーザーのみ。アプリを削除してしまったら不可)
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードの並べ替えがしたい</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">トップ左上の「並べ替え」から行えます。
+         </span></dd>
+     </div>
+ </dl>
+
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">CSVがエクセルで開くと文字化けする</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">Googleのスプレッドシートをお使いただけるようよろしくお願いします。その後エクセル形式で吐き出していただければお使いいただけます。
+         </span></dd>
+     </div>
+ </dl>
+ <dl class="faqArea">
+     <div class="item faqAreaSize100">
+         <dt><span class="q"><span class="text">Q</span></span><span class="copy">検索の使い方</span></dt>
+         <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能は素早くパスワードを検索することができます。
+           検索窓に文字をいれ右下の確定ボタンを押してください。例えば「アマゾン」というパスワードがあったら「ア」でも絞り込まれます。<br>
+           検索を行う場合はすべてのパスワードから絞り込まれる仕様になります。
+         </span></dd>
+     </div>
+ </dl>
+        <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">新機能「お気に入り」の使い方（ハートマーク）</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能はiPhoneの通知センターよりアプリを起動しなくてもパスワードをコピーすることができる便利な機能です。
+                <br>
+                使い方は簡単。アプリの上部から「通知センター」を呼び出します。呼び出したら一番下の「編集」をタップします。<br>
+                そこでpassmanagerLikeListを追加追加します。<br>
+                これでいつでも通知センターよりお気に入りを呼び出すことができます。<br><br>
+                <iframe width="100%" src="https://www.youtube.com/embed/Yv56MRWxyRU" frameborder="0" allowfullscreen></iframe>
+                </span></dd>
+            </div>
+        </dl>
+
+        <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">登録したパスワードの編集ってどうするの？</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">パスワードが並んでいる画面の登録した名前あたりをタップしてください。
+                  <br>すると詳細画面へ移動します。<br><br>
+                <iframe width="100%" src="https://www.youtube.com/embed/1D9tgOr4bT0" frameborder="0" allowfullscreen></iframe>
+                </span></dd>
+            </div>
+        </dl>
+
+        <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">オートログインを使いたい</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">オートログインとはIDとパスワードを予め登録しておくと次回からワンボタンで入力無しでログイン出来る機能です。
+                <br>IDとパスワード入力します。その後URL欄にログイン画面のURLを設定します。すると次回から「サイトへ」のボタンを押すと自動でログインすることが出来ます。</span></dd>
+            </div>
+        </dl>
+
+
+        <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードの行を長押しで簡単オートログイン</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">オートログイン機能は簡単に実行する事が出来ます。
+                  予めIDとパスワードとURLをセットします。<br>
+                  パスワード一覧画面（Top画面）でパスワードの行を長押しするとワンボタンでオートログインすることが出来ます。
+                </span></dd>
+            </div>
+        </dl>
+
+
+        <dl class="faqArea">
+            <div class="item faqAreaSize100">
+                <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードをバックアップしたい</span></dt>
+                <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhoneやiPadはiCloudをオンにしておくと常にバックアップされた状態になります。
+                  こまめにバックアップをしておくことを推奨します。設定→iCloud→バックアップ<br>
+                  復元の方法は？<br>
+                  新しいiPhoneを購入した際にセットアップ画面でiCloudから復元という項目を押すと簡単にパスマネージャーの状態も復元することが出来ます。
+                </span></dd>
+            </div>
+        </dl>
+        <p style=color:red>日々お問い合わせが来る中、暴言や配慮のない文章や喧嘩腰な方、気分を害する内容など様々なメールが届きます。開発者も一人の人間となります。<br><br>
+          更にアプリのサポート以外のスマホの基本的な使い方などはお答えしかねます。<br>基本的に開発者のメンタル面が非常に弱い為上記個人的に判断した場合は一切返信されない旨ご協力のほど何卒よろしくお願いします。</p>
+        <p class="downLoad"><a
+                href="mailto:&#121;&#110;&#46;&#109;&#97;&#105;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;?subject=パスマネージャへーのお問い合わせ:&amp;body=ご質問内容">お問い合わせ</a>
+        </p>
+
+        <!--<p class="downLoad"><a href="https://itunes.apple.com/us/app/bakodode-jian-danni-shang/id901107971?mt=8" target="_blank">アプリのダウンロード</a>-->
+        </p>
+
+        <footer>© Nyantaro Apps./ Yosuke Nakayama</footer>
+
+
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="passmanager/js/common.js"></script>
+</body>
+</html>
