@@ -1,325 +1,1019 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="utf-8">
-    <title>パスマネージャー</title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="keywords" content="パスマネージャー,パスワード">
-    <meta name="description" content="パスマネージャー">
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.16.0-rc-1/build/cssreset/cssreset-min.css">
-    <link rel="stylesheet" href="css/common.css" type="text/css" media="all">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ヘルプ・よくある質問 | パスマネ</title>
+  <meta name="description" content="パスマネの使い方とよくある質問。パスワード管理、バックアップ、セキュリティ設定などを解説します。">
+  <style>
+    :root {
+      --accent: #5B5EF4;
+      --accent-light: #EEEEFF;
+      --accent-dark: #3E41D4;
+      --text-primary: #1A1A2E;
+      --text-secondary: #6B7280;
+      --text-muted: #9CA3AF;
+      --bg: #F8F9FF;
+      --bg-card: #FFFFFF;
+      --border: #E5E7F0;
+      --shadow: 0 2px 12px rgba(91,94,244,0.08);
+      --shadow-hover: 0 8px 24px rgba(91,94,244,0.16);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
 
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <style type="text/css">
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --accent: #7B7EFF;
+        --accent-light: #1E1F3A;
+        --accent-dark: #9B9EFF;
+        --text-primary: #F0F0FF;
+        --text-secondary: #A0A8C0;
+        --text-muted: #6B7480;
+        --bg: #0F0F1A;
+        --bg-card: #1A1A2E;
+        --border: #2A2B44;
+        --shadow: 0 2px 12px rgba(0,0,0,0.3);
+        --shadow-hover: 0 8px 24px rgba(91,94,244,0.2);
+      }
+    }
 
-        .help h2{
-            font-weight: normal;
-            font-size: 20px;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
 
-        .curled-box{
-            display: inline-block;
-            position: relative;
-            border-radius: 50%;
-            height: 10px;
-            width: 10px;
-            background: #787878;
+    /* ===== HEADER ===== */
+    .header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        }
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .curled-box .space{
-            position: absolute;
-            border-radius: 50%;
-            height: 6px;
-            width: 6px;
-            left: 50%;
-            top: 50%;
-            margin-left: -3px;
-            margin-top: -3px;
-            background: #EDEBDF;
-        }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 6px 0;
+      flex-shrink: 0;
+    }
 
-        .h2Line{
-            background: #787878;
-            width: 100%;
-            height: 2px;
-            margin-bottom: 30px;
-        }
+    .back-btn svg { width: 18px; height: 18px; }
+    .back-btn.hidden { visibility: hidden; pointer-events: none; }
 
-        .faqArea{
-            padding-bottom: 40px;
-            margin-bottom:  40px;
-            border-bottom:1px dotted #aaa;
-        }
+    .header-title {
+      flex: 1;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
 
-        .faqArea dt{
-            position: relative;
-            margin-bottom: 10px;
-            font-weight: bold;
-            font-size: 20px;
-        }
+    .header-spacer { width: 60px; }
 
-        .faqArea dd{
-            font-size: 12px;
-        }
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--accent) 0%, #8B5CF6 100%);
+      padding: 40px 20px 32px;
+      text-align: center;
+    }
 
-        .faqArea .q{
-            background: #787878;
-        }
+    .hero-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
 
-        .faqArea .a{
-            background: #aaa;
-        }
+    .hero-icon svg { width: 36px; height: 36px; fill: #fff; }
 
-        .faqArea .q,.faqArea .a{
-            position: absolute;
-            display: inline-block;
-            border-radius: 50%;
-            height: 30px;
-            width: 30px;
+    .hero h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
 
-            font-size: 14px;
-            color: #fff;
-            font-weight: normal;
-            text-align: center;
-        }
+    .hero p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 20px;
+    }
 
-        .faqAreaSize100{
-            width: 100%;
-        }
+    /* ===== SEARCH ===== */
+    .search-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
 
-        .faqAreaSize60{
-            width: 60%;
-        }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
 
-        .faqAreaSize36{
-            width: 36%;
-        }
+    .search-icon svg { width: 18px; height: 18px; }
 
-        .faqArea .text{
-            float: left;
-            width: 30px;
-            padding: 4px 0 0 0;
-            text-align: center;
-        }
+    .search-input {
+      width: 100%;
+      padding: 13px 40px 13px 44px;
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-family: inherit;
+      background: var(--bg-card);
+      color: var(--text-primary);
+      outline: none;
+      -webkit-appearance: none;
+    }
 
-        .faqArea .copy{
-            margin: 2px 0 0 40px;
-            display: inline-block;
-        }
+    .search-input::placeholder { color: var(--text-muted); }
 
+    .search-clear {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--border);
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
 
-        .item{
-            display: inline-block;
-        }
+    .search-clear.visible { display: flex; }
+    .search-clear svg { width: 12px; height: 12px; }
 
+    /* ===== MAIN CONTENT ===== */
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
 
-    </style>
+    /* ===== SEARCH RESULTS ===== */
+    .search-results { display: none; }
+    .search-results.visible { display: block; }
 
+    .search-result-count {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      padding: 0 4px;
+    }
 
+    .search-result-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .search-result-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .search-result-item:hover {
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .search-result-item .cat-badge {
+      font-size: 11px;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 3px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .search-result-item .title {
+      font-size: 14px;
+      font-weight: 600;
+      flex: 1;
+      color: var(--text-primary);
+    }
+
+    .search-result-item .chevron { color: var(--text-muted); flex-shrink: 0; }
+    .search-result-item .chevron svg { width: 16px; height: 16px; display: block; }
+
+    .search-empty {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--text-muted);
+    }
+
+    .search-empty svg { width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.4; }
+    .search-empty p { font-size: 14px; }
+
+    /* ===== CATEGORY LIST ===== */
+    .category-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      padding: 16px 18px;
+      cursor: pointer;
+      gap: 14px;
+      transition: background 0.15s;
+      user-select: none;
+    }
+
+    .category-header:hover { background: var(--accent-light); }
+
+    .cat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cat-icon svg { width: 22px; height: 22px; }
+
+    .cat-info { flex: 1; min-width: 0; }
+
+    .cat-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .cat-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cat-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .cat-chevron {
+      color: var(--text-muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .cat-chevron svg { width: 18px; height: 18px; display: block; }
+    .category-card.open .cat-chevron { transform: rotate(90deg); }
+
+    .article-list {
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .category-card.open .article-list { display: block; }
+
+    .article-item {
+      display: flex;
+      align-items: center;
+      padding: 13px 18px 13px 72px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      gap: 10px;
+      transition: background 0.15s;
+    }
+
+    .article-item:last-child { border-bottom: none; }
+    .article-item:hover { background: var(--accent-light); }
+
+    .article-title {
+      flex: 1;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .article-chevron { color: var(--text-muted); flex-shrink: 0; }
+    .article-chevron svg { width: 14px; height: 14px; display: block; }
+
+    /* ===== ARTICLE DETAIL ===== */
+    .article-detail { display: none; }
+    .article-detail.visible { display: block; }
+
+    .article-category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .article-category-tag svg { width: 14px; height: 14px; }
+
+    .article-h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 24px;
+      letter-spacing: -0.3px;
+    }
+
+    .article-body {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .article-body-content p {
+      font-size: 15px;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .article-body-content p:last-child { margin-bottom: 0; }
+
+    .article-body-content ul {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+
+    .article-body-content ul li {
+      font-size: 15px;
+      color: var(--text-primary);
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+
+    .article-body-content ul li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: 4px;
+      top: 13px;
+    }
+
+    .article-body-content ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    .article-body-content ol li {
+      font-size: 15px;
+      color: var(--text-primary);
+      padding: 4px 0;
+    }
+
+    .article-body-content .body-heading {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+      margin-top: 20px;
+    }
+
+    .article-body-content .body-heading:first-child { margin-top: 0; }
+
+    /* ===== ACTIONS ===== */
+    .article-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+      border: none;
+    }
+
+    .action-btn:active { transform: scale(0.98); opacity: 0.85; }
+    .action-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    .action-btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .action-btn-secondary {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    /* ===== RELATED ===== */
+    .related-section { margin-bottom: 24px; }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .related-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .related-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 13px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .related-item:hover {
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .related-item .title {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .related-item .chevron { color: var(--text-muted); flex-shrink: 0; }
+    .related-item .chevron svg { width: 14px; height: 14px; display: block; }
+
+    /* ===== CONTACT ===== */
+    .contact-card {
+      background: linear-gradient(135deg, var(--accent-light) 0%, #F3F0FF 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .contact-card {
+        background: linear-gradient(135deg, var(--accent-light) 0%, #1A1A2E 100%);
+      }
+    }
+
+    .contact-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .contact-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--accent);
+      color: #fff;
+      padding: 11px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .contact-btn:hover { opacity: 0.85; }
+    .contact-btn svg { width: 16px; height: 16px; }
+
+    /* ===== VIEWS ===== */
+    #view-home, #view-article { }
+    #view-home.hidden { display: none; }
+    #view-article.hidden { display: none; }
+
+    /* ===== LOADING ===== */
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 12px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 480px) {
+      .hero { padding: 32px 16px 24px; }
+      .hero h1 { font-size: 19px; }
+      .article-h1 { font-size: 19px; }
+      .content { padding: 16px 12px 60px; }
+      .article-body { padding: 18px; }
+      .article-item { padding-left: 60px; }
+    }
+  </style>
 </head>
-
-
-
-
 <body>
-<div class="wrap">
 
-    <div class="contents help">
-        <div class="innter">
-            <h2>
-                <div class="curled-box">
-                    <div class="space"></div>
-                </div>
-            ヘルプ
-            </h2>
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <button class="back-btn hidden" id="back-btn" onclick="goBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      <span>戻る</span>
+    </button>
+    <div class="header-title" id="header-title">ヘルプ・よくある質問</div>
+    <div class="header-spacer"></div>
+  </div>
+</header>
+
+<!-- HERO (home only) -->
+<div id="hero-section">
+  <div class="hero">
+    <div class="hero-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 1C8.68 1 6 3.68 6 7c0 2.09.86 3.97 2.24 5.32L7 20h10l-1.24-7.68A6.98 6.98 0 0 0 18 7c0-3.32-2.68-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="currentColor"/></svg>
     </div>
-    <div class="h2Line"></div>
-
-
-
-
-        <!--<dl class="faqArea">-->
-            <!--<div class="item faqAreaSize60">-->
-                <!--<dt><span class="q"><span class="text">Q</span></span><span class="copy">バーコードから賞味期限を登録する方法は？</span></dt>-->
-                <!--<dd><span class="a"><span class="text">A</span></span><span class="copy">これはこうです</span></dd>-->
-            <!--</div>-->
-            <!--<div class="image faqAreaSize36"><img src="images/img_photo_1.gif" width="90" height="90">-->
-            <!--</div>-->
-        <!--</dl>-->
-        <!-- <dl class="faqArea">
-            <div class="item faqAreaSize100">
-                <dt><span class="q"><span class="text">Q</span></span><span class="copy">トップ画面からパスワードがコピーできない</span></dt>
-                <dd><span class="a"><span class="text">A</span></span><span class="copy">現在不具合対応してAppleに審査提出中です。今週か来週に修正される予定です。必ず良いものにするので温かい目で見守ってください。</span></dd>
-            </div>
-        </dl>
-
- -->
- <!-- <dl class="faqArea">
-     <div class="item faqAreaSize100">
-         <dt><span class="q"><span class="text">Q</span></span><span class="copy">今後の更新にについて</span></dt>
-         <dd><span class="a"><span class="text">A</span></span><span class="copy">
-           今後のアップデートはしばらく行わないことに決めました。<br>
-           先日のアップデートから心無いレビューや中傷的なメールが多く非常に憤りを感じております。現時点でアップストアへ出ている無料のパスワード管理の中ではどう考えても高機能な部類に入ります。
-           毎日使用しているにもかかわらず気分で星を一つにしてみたり、自分の思い通りにいかないからといって酷いクレームを入れたり。<br>
-           開発者としてこのアプリを本当に作り続けてよいのか疑問を感じました。
-         </span></dd>
-     </div>
- </dl> -->
- <dl class="faqArea">
-    <div class="item faqAreaSize100">
-        <dt><span class="q"><span class="text">Q</span></span><span class="copy">課金時にエラーが発生して機能が追加されない</span></dt>
-        <dd><span class="a"><span class="text">A</span></span><span class="copy">クレジットカードが登録されていない場合<br>
-            クレジットカード登録後に戻るとエラーが発生することがあります。<br>
-            課金画面よりリストアを押してください。機能が付きます。
-        </span></dd>
+    <h1>パスマネ ヘルプセンター</h1>
+    <p>使い方やよくある質問にお答えします</p>
+    <div class="search-wrap">
+      <span class="search-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <input
+        class="search-input"
+        id="search-input"
+        type="search"
+        placeholder="キーワードで検索..."
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        oninput="onSearch(this.value)"
+      >
+      <button class="search-clear" id="search-clear" onclick="clearSearch()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
-</dl>
- <dl class="faqArea">
-     <div class="item faqAreaSize100">
-         <dt><span class="q"><span class="text">Q</span></span><span class="copy">Safariから自動ログイン機能</span></dt>
-         <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能はサファリからパスマネの情報を呼び出し自動でパスワードを入力する機能です。
-         <br>
-        使い方は簡単。サファリの下部分真ん中のアイコンをタップ。更に下部分のアイコンから「その他」を選択。<br><br>
-         「パスマネ」で自動入力をスイッチオン。あとはログイン画面まで進めば自動で簡単にパスマネで登録したパスワードを呼び出すことが可能です。<br><br>
-         詳しくは下の動画を御覧ください。手順はGoogleで「Safari AppExtension 使い方」で検索。<br><br>
-         <iframe width="100%" src="https://www.youtube.com/embed/OCW_PwezPNM" frameborder="0" allowfullscreen></iframe>         
-         </span></dd>
-     </div>
- </dl>
-
- <dl class="faqArea">
-     <div class="item faqAreaSize100">
-         <dt><span class="q"><span class="text">Q</span></span><span class="copy">機種変更して新しいiPhoneにしたい</span></dt>
-         <dd><span class="a"><span class="text">A</span></span><span class="copy">いくつか方法がありますが、一例として。アプリの設定から「パスワードをバックアップ・復元する」をタップ。<br>一旦バックアップを取る。
-           その後新しいiPhoneで設定から復元を押す。するとバックアップからデータを引き出すことができます。その後課金していた場合、課金画面よりリストアというボタンを押すと無事引っ越し完了です。
-         </span></dd>
-     </div>
- </dl>
-
- <dl class="faqArea">
-     <div class="item faqAreaSize100">
-         <dt><span class="q"><span class="text">Q</span></span><span class="copy">設定からiCloud保存でずっと読み込み中</span></dt>
-         <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhone本体の設定上部「AppleID」(ユーザー画像部分)をタップ
-         <br>
-         →iCloudをタップ→ここでiCloudがパスマネにcheckが入っているか確認<br>
-         </span></dd>
-     </div>
- </dl>
-
- <dl class="faqArea">
-     <div class="item faqAreaSize100">
-         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードをコピーすると落ちる</span></dt>
-         <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhoneの「設定」から「一般」→「日付と時刻」を24時間に変更してください。
-           ※現在対応中次回アップデートで修復します。
-         </span></dd>
-     </div>
- </dl>
- <dl class="faqArea">
-     <div class="item faqAreaSize100">
-         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードが消えてしまった？</span></dt>
-         <dd><span class="a"><span class="text">A</span></span><span class="copy">カテゴリーの「すべて」に存在する可能性がございます。一度ご確認ください。<br>
-           またはversion2.4.0でクラッシュが連発して開けなくなっていたという状態であれば「設定」から「パスワードのエクスポート」で「v2.3.5以前のデータを抽出」いただければ<br>
-           抽出が可能です。(クラッシュ対象ユーザーのみ。アプリを削除してしまったら不可)
-         </span></dd>
-     </div>
- </dl>
- <dl class="faqArea">
-     <div class="item faqAreaSize100">
-         <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードの並べ替えがしたい</span></dt>
-         <dd><span class="a"><span class="text">A</span></span><span class="copy">トップ左上の「並べ替え」から行えます。
-         </span></dd>
-     </div>
- </dl>
-
- <dl class="faqArea">
-     <div class="item faqAreaSize100">
-         <dt><span class="q"><span class="text">Q</span></span><span class="copy">CSVがエクセルで開くと文字化けする</span></dt>
-         <dd><span class="a"><span class="text">A</span></span><span class="copy">Googleのスプレッドシートをお使いただけるようよろしくお願いします。その後エクセル形式で吐き出していただければお使いいただけます。
-         </span></dd>
-     </div>
- </dl>
- <dl class="faqArea">
-     <div class="item faqAreaSize100">
-         <dt><span class="q"><span class="text">Q</span></span><span class="copy">検索の使い方</span></dt>
-         <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能は素早くパスワードを検索することができます。
-           検索窓に文字をいれ右下の確定ボタンを押してください。例えば「アマゾン」というパスワードがあったら「ア」でも絞り込まれます。<br>
-           検索を行う場合はすべてのパスワードから絞り込まれる仕様になります。
-         </span></dd>
-     </div>
- </dl>
-        <dl class="faqArea">
-            <div class="item faqAreaSize100">
-                <dt><span class="q"><span class="text">Q</span></span><span class="copy">新機能「お気に入り」の使い方（ハートマーク）</span></dt>
-                <dd><span class="a"><span class="text">A</span></span><span class="copy">この機能はiPhoneの通知センターよりアプリを起動しなくてもパスワードをコピーすることができる便利な機能です。
-                <br>
-                使い方は簡単。アプリの上部から「通知センター」を呼び出します。呼び出したら一番下の「編集」をタップします。<br>
-                そこでpassmanagerLikeListを追加追加します。<br>
-                これでいつでも通知センターよりお気に入りを呼び出すことができます。<br><br>
-                <iframe width="100%" src="https://www.youtube.com/embed/Yv56MRWxyRU" frameborder="0" allowfullscreen></iframe>
-                </span></dd>
-            </div>
-        </dl>
-
-        <dl class="faqArea">
-            <div class="item faqAreaSize100">
-                <dt><span class="q"><span class="text">Q</span></span><span class="copy">登録したパスワードの編集ってどうするの？</span></dt>
-                <dd><span class="a"><span class="text">A</span></span><span class="copy">パスワードが並んでいる画面の登録した名前あたりをタップしてください。
-                  <br>すると詳細画面へ移動します。<br><br>
-                <iframe width="100%" src="https://www.youtube.com/embed/1D9tgOr4bT0" frameborder="0" allowfullscreen></iframe>
-                </span></dd>
-            </div>
-        </dl>
-
-        <dl class="faqArea">
-            <div class="item faqAreaSize100">
-                <dt><span class="q"><span class="text">Q</span></span><span class="copy">オートログインを使いたい</span></dt>
-                <dd><span class="a"><span class="text">A</span></span><span class="copy">オートログインとはIDとパスワードを予め登録しておくと次回からワンボタンで入力無しでログイン出来る機能です。
-                <br>IDとパスワード入力します。その後URL欄にログイン画面のURLを設定します。すると次回から「サイトへ」のボタンを押すと自動でログインすることが出来ます。</span></dd>
-            </div>
-        </dl>
-
-
-        <dl class="faqArea">
-            <div class="item faqAreaSize100">
-                <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードの行を長押しで簡単オートログイン</span></dt>
-                <dd><span class="a"><span class="text">A</span></span><span class="copy">オートログイン機能は簡単に実行する事が出来ます。
-                  予めIDとパスワードとURLをセットします。<br>
-                  パスワード一覧画面（Top画面）でパスワードの行を長押しするとワンボタンでオートログインすることが出来ます。
-                </span></dd>
-            </div>
-        </dl>
-
-
-        <dl class="faqArea">
-            <div class="item faqAreaSize100">
-                <dt><span class="q"><span class="text">Q</span></span><span class="copy">パスワードをバックアップしたい</span></dt>
-                <dd><span class="a"><span class="text">A</span></span><span class="copy">iPhoneやiPadはiCloudをオンにしておくと常にバックアップされた状態になります。
-                  こまめにバックアップをしておくことを推奨します。設定→iCloud→バックアップ<br>
-                  復元の方法は？<br>
-                  新しいiPhoneを購入した際にセットアップ画面でiCloudから復元という項目を押すと簡単にパスマネージャーの状態も復元することが出来ます。
-                </span></dd>
-            </div>
-        </dl>
-        <p style=color:red>日々お問い合わせが来る中、暴言や配慮のない文章や喧嘩腰な方、気分を害する内容など様々なメールが届きます。開発者も一人の人間となります。<br><br>
-          更にアプリのサポート以外のスマホの基本的な使い方などはお答えしかねます。<br>基本的に開発者のメンタル面が非常に弱い為上記個人的に判断した場合は一切返信されない旨ご協力のほど何卒よろしくお願いします。</p>
-        <p class="downLoad"><a
-                href="mailto:&#121;&#110;&#46;&#109;&#97;&#105;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;?subject=パスマネージャへーのお問い合わせ:&amp;body=ご質問内容">お問い合わせ</a>
-        </p>
-
-        <!--<p class="downLoad"><a href="https://itunes.apple.com/us/app/bakodode-jian-danni-shang/id901107971?mt=8" target="_blank">アプリのダウンロード</a>-->
-        </p>
-
-        <footer>© Nyantaro Apps./ Yosuke Nakayama</footer>
-
-
-    </div>
+  </div>
 </div>
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script src="passmanager/js/common.js"></script>
+
+<!-- MAIN -->
+<main class="content">
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    読み込み中...
+  </div>
+
+  <!-- HOME VIEW -->
+  <div id="view-home" class="hidden">
+    <!-- Search Results -->
+    <div class="search-results" id="search-results">
+      <p class="search-result-count" id="search-count"></p>
+      <div class="search-result-list" id="search-result-list"></div>
+      <div class="search-empty hidden" id="search-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <p>「<span id="search-empty-query"></span>」に一致する記事が見つかりませんでした</p>
+      </div>
+    </div>
+
+    <!-- Category List -->
+    <div class="category-list" id="category-list"></div>
+
+    <!-- Contact -->
+    <div style="margin-top: 32px;">
+      <div class="contact-card">
+        <h3>問題が解決しませんでしたか？</h3>
+        <p>お気軽にお問い合わせください。できる限り対応いたします。</p>
+        <a class="contact-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSelRt6plYxlJmrAa6JiDmO99S3NokhcGA8NBdv1_cTXsX3KiQ/viewform" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          お問い合わせフォーム
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE DETAIL VIEW -->
+  <div id="view-article" class="hidden">
+    <div class="article-detail visible" id="article-detail">
+      <div class="article-category-tag" id="article-cat-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        <span id="article-cat-name"></span>
+      </div>
+      <h1 class="article-h1" id="article-title"></h1>
+      <div class="article-body">
+        <div class="article-body-content" id="article-body-content"></div>
+      </div>
+      <div class="article-actions" id="article-actions"></div>
+      <div class="related-section" id="related-section">
+        <p class="section-label">関連記事</p>
+        <div class="related-list" id="related-list"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+// ===== DATA =====
+let helpData = null;
+let currentArticleId = null;
+let searchQuery = '';
+
+const CATEGORY_ICONS = {
+  'getting-started': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+  'passwords': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+  'security': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  'backup': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`,
+  'premium': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+  'widget': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`,
+  'settings': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
+  'trouble': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+};
+
+const CATEGORY_COLORS = {
+  'getting-started': { bg: '#EEF2FF', icon: '#5B5EF4' },
+  'passwords':       { bg: '#F0FDF4', icon: '#16A34A' },
+  'security':        { bg: '#FFF7ED', icon: '#EA580C' },
+  'backup':          { bg: '#EFF6FF', icon: '#2563EB' },
+  'premium':         { bg: '#FEFCE8', icon: '#CA8A04' },
+  'widget':          { bg: '#F5F3FF', icon: '#7C3AED' },
+  'settings':        { bg: '#F0FDFA', icon: '#0D9488' },
+  'trouble':         { bg: '#FFF1F2', icon: '#E11D48' },
+};
+
+// ===== LOAD DATA =====
+async function loadData() {
+  try {
+    const res = await fetch('help-content.json');
+    helpData = await res.json();
+  } catch (e) {
+    helpData = null;
+  }
+  document.getElementById('loading').style.display = 'none';
+  renderHome();
+}
+
+// ===== RENDER HOME =====
+function renderHome() {
+  document.getElementById('view-home').classList.remove('hidden');
+  document.getElementById('view-article').classList.add('hidden');
+  document.getElementById('back-btn').classList.add('hidden');
+  document.getElementById('header-title').textContent = 'ヘルプ・よくある質問';
+  document.getElementById('hero-section').style.display = '';
+
+  if (!helpData) {
+    document.getElementById('category-list').innerHTML =
+      '<p style="text-align:center;color:var(--text-muted);padding:40px 0;font-size:14px;">コンテンツを読み込めませんでした</p>';
+    return;
+  }
+
+  const catList = document.getElementById('category-list');
+  catList.innerHTML = '';
+
+  helpData.categories.forEach(cat => {
+    const articles = helpData.articles.filter(a => a.categoryId === cat.id);
+    const color = CATEGORY_COLORS[cat.id] || { bg: '#F3F4F6', icon: '#6B7280' };
+    const icon = CATEGORY_ICONS[cat.id] || CATEGORY_ICONS['settings'];
+
+    const card = document.createElement('div');
+    card.className = 'category-card';
+    card.dataset.catId = cat.id;
+
+    card.innerHTML = `
+      <div class="category-header" onclick="toggleCategory('${cat.id}')">
+        <div class="cat-icon" style="background:${color.bg};color:${color.icon}">
+          ${icon}
+        </div>
+        <div class="cat-info">
+          <div class="cat-title">${cat.title}</div>
+          <div class="cat-desc">${cat.description}</div>
+        </div>
+        <span class="cat-count">${articles.length}件</span>
+        <span class="cat-chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </div>
+      <div class="article-list" id="al-${cat.id}">
+        ${articles.map(a => `
+          <div class="article-item" onclick="openArticle('${a.id}')">
+            <span class="article-title">${a.title}</span>
+            <span class="article-chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    catList.appendChild(card);
+  });
+
+  // If search was active, restore it
+  if (searchQuery) onSearch(searchQuery);
+}
+
+// ===== TOGGLE CATEGORY =====
+function toggleCategory(catId) {
+  const card = document.querySelector(`.category-card[data-cat-id="${catId}"]`);
+  if (card) card.classList.toggle('open');
+}
+
+// ===== SEARCH =====
+function onSearch(query) {
+  searchQuery = query.trim();
+  const clearBtn = document.getElementById('search-clear');
+  const searchResults = document.getElementById('search-results');
+  const catList = document.getElementById('category-list');
+
+  if (searchQuery.length === 0) {
+    clearBtn.classList.remove('visible');
+    searchResults.classList.remove('visible');
+    catList.style.display = '';
+    return;
+  }
+
+  clearBtn.classList.add('visible');
+  searchResults.classList.add('visible');
+  catList.style.display = 'none';
+
+  if (searchQuery.length < 1 || !helpData) return;
+
+  const q = searchQuery.toLowerCase();
+  const results = helpData.articles.filter(a => {
+    if (a.title.toLowerCase().includes(q)) return true;
+    if (a.keywords && a.keywords.some(k => k.toLowerCase().includes(q))) return true;
+    if (a.body && a.body.toLowerCase().includes(q)) return true;
+    return false;
+  });
+
+  const countEl = document.getElementById('search-count');
+  const listEl = document.getElementById('search-result-list');
+  const emptyEl = document.getElementById('search-empty');
+  const emptyQuery = document.getElementById('search-empty-query');
+
+  countEl.textContent = `「${searchQuery}」の検索結果：${results.length}件`;
+
+  if (results.length === 0) {
+    listEl.innerHTML = '';
+    emptyEl.classList.remove('hidden');
+    emptyQuery.textContent = searchQuery;
+  } else {
+    emptyEl.classList.add('hidden');
+    listEl.innerHTML = results.map(a => {
+      const cat = helpData.categories.find(c => c.id === a.categoryId);
+      return `
+        <div class="search-result-item" onclick="openArticle('${a.id}')">
+          <span class="cat-badge">${cat ? cat.title : ''}</span>
+          <span class="title">${a.title}</span>
+          <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      `;
+    }).join('');
+  }
+}
+
+function clearSearch() {
+  document.getElementById('search-input').value = '';
+  onSearch('');
+}
+
+// ===== OPEN ARTICLE =====
+function openArticle(articleId) {
+  if (!helpData) return;
+  const article = helpData.articles.find(a => a.id === articleId);
+  if (!article) return;
+
+  currentArticleId = articleId;
+
+  const cat = helpData.categories.find(c => c.id === article.categoryId);
+  const color = CATEGORY_COLORS[article.categoryId] || { bg: '#F3F4F6', icon: '#6B7280' };
+
+  // Update views
+  document.getElementById('view-home').classList.add('hidden');
+  document.getElementById('view-article').classList.remove('hidden');
+  document.getElementById('hero-section').style.display = 'none';
+  document.getElementById('back-btn').classList.remove('hidden');
+  document.getElementById('header-title').textContent = cat ? cat.title : 'ヘルプ';
+
+  // Category tag
+  const catTag = document.getElementById('article-cat-tag');
+  catTag.style.background = color.bg;
+  catTag.style.color = color.icon;
+  document.getElementById('article-cat-name').textContent = cat ? cat.title : '';
+
+  // Title
+  document.getElementById('article-title').textContent = article.title;
+
+  // Body
+  document.getElementById('article-body-content').innerHTML = renderBody(article.body);
+
+  // Actions
+  const actionsEl = document.getElementById('article-actions');
+  if (article.actions && article.actions.length > 0) {
+    actionsEl.innerHTML = article.actions.map((action, i) => {
+      const isPrimary = i === 0;
+      if (action.type === 'url') {
+        return `<a class="action-btn ${isPrimary ? 'action-btn-primary' : 'action-btn-secondary'}" href="${action.url}" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          ${action.label}
+        </a>`;
+      }
+      return '';
+    }).join('');
+    actionsEl.style.display = 'flex';
+  } else {
+    actionsEl.innerHTML = '';
+    actionsEl.style.display = 'none';
+  }
+
+  // Related
+  const relatedEl = document.getElementById('related-list');
+  const relatedSection = document.getElementById('related-section');
+  if (article.related && article.related.length > 0) {
+    const relatedArticles = article.related
+      .map(id => helpData.articles.find(a => a.id === id))
+      .filter(Boolean);
+
+    if (relatedArticles.length > 0) {
+      relatedEl.innerHTML = relatedArticles.map(ra => `
+        <div class="related-item" onclick="openArticle('${ra.id}')">
+          <span class="title">${ra.title}</span>
+          <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      `).join('');
+      relatedSection.style.display = '';
+    } else {
+      relatedSection.style.display = 'none';
+    }
+  } else {
+    relatedSection.style.display = 'none';
+  }
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===== RENDER BODY =====
+function renderBody(text) {
+  if (!text) return '';
+
+  const paragraphs = text.split('\n\n');
+  return paragraphs.map(para => {
+    const lines = para.split('\n');
+    const firstLine = lines[0] || '';
+
+    // Heading: 【...】
+    if (firstLine.startsWith('【') && firstLine.includes('】')) {
+      const rest = lines.slice(1).join('\n');
+      return `<p class="body-heading">${escapeHtml(firstLine)}</p>${rest ? renderBody(rest) : ''}`;
+    }
+
+    // Unordered list: - item
+    if (lines.every(l => l.startsWith('- ') || l === '')) {
+      const items = lines.filter(l => l.startsWith('- ')).map(l => l.slice(2));
+      return `<ul>${items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>`;
+    }
+
+    // Mixed: some lines are bullet points
+    const hasBullets = lines.some(l => l.startsWith('- '));
+    const hasOrdered = lines.some(l => /^\d+\.\s/.test(l));
+
+    if (hasBullets) {
+      const items = [];
+      let currentText = '';
+      lines.forEach(l => {
+        if (l.startsWith('- ')) {
+          if (currentText) items.push({ type: 'text', text: currentText });
+          currentText = '';
+          items.push({ type: 'li', text: l.slice(2) });
+        } else {
+          currentText += (currentText ? '\n' : '') + l;
+        }
+      });
+      if (currentText) items.push({ type: 'text', text: currentText });
+
+      let html = '';
+      let inList = false;
+      items.forEach(item => {
+        if (item.type === 'li') {
+          if (!inList) { html += '<ul>'; inList = true; }
+          html += `<li>${escapeHtml(item.text)}</li>`;
+        } else {
+          if (inList) { html += '</ul>'; inList = false; }
+          if (item.text.trim()) html += `<p>${escapeHtml(item.text)}</p>`;
+        }
+      });
+      if (inList) html += '</ul>';
+      return html;
+    }
+
+    if (hasOrdered) {
+      const items = lines.filter(l => /^\d+\.\s/.test(l)).map(l => l.replace(/^\d+\.\s/, ''));
+      return `<ol>${items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ol>`;
+    }
+
+    return `<p>${escapeHtml(para)}</p>`;
+  }).join('');
+}
+
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ===== BACK =====
+function goBack() {
+  currentArticleId = null;
+  document.getElementById('view-article').classList.add('hidden');
+  document.getElementById('view-home').classList.remove('hidden');
+  document.getElementById('hero-section').style.display = '';
+  document.getElementById('back-btn').classList.add('hidden');
+  document.getElementById('header-title').textContent = 'ヘルプ・よくある質問';
+  window.scrollTo({ top: 0 });
+}
+
+// ===== INIT =====
+loadData();
+</script>
 </body>
 </html>
