@@ -1,6 +1,6 @@
 {
-  "version": 2026070300,
-  "updatedAt": "2026-07-03",
+  "version": 2026071200,
+  "updatedAt": "2026-07-12",
   "categories": [
     {
       "id": "getting-started",
@@ -90,6 +90,13 @@
         "sec-biometric",
         "bk-icloud",
         "gs-add-password"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "パスワードを追加する",
+          "route": "tab-home"
+        }
       ]
     },
     {
@@ -114,6 +121,13 @@
         "pw-generate",
         "gs-first-use",
         "gs-categories"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "パスワードを追加する",
+          "route": "tab-home"
+        }
       ]
     },
     {
@@ -137,6 +151,13 @@
         "sec-clipboard",
         "pw-edit-delete",
         "gs-add-password"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "ホームを開く",
+          "route": "tab-home"
+        }
       ]
     },
     {
@@ -153,9 +174,14 @@
         "金融",
         "ショッピング",
         "仕事",
-        "絞り込み"
+        "絞り込み",
+        "並び替え",
+        "並べ替え",
+        "ドラッグ",
+        "順番",
+        "順序"
       ],
-      "body": "パスワードをカテゴリごとに整理することで、目的のパスワードをすばやく見つけられます。\n\n【カテゴリの種類】\n- SNS・コミュニティ\n- メール\n- ショッピング\n- 金融・銀行\n- エンタメ・動画\n- 仕事・ビジネス\n- 旅行・交通\n- その他\n\n【カテゴリを設定する手順】\n1. パスワードの登録・編集画面を開く\n2. 「カテゴリ」欄をタップする\n3. 表示された一覧から該当するカテゴリを選ぶ\n4. 「保存」をタップする\n\n【カテゴリで絞り込む手順】\n1. ホーム画面上部のカテゴリフィルタをタップする\n2. 絞り込みたいカテゴリを選ぶ\n3. 選んだカテゴリのパスワードだけが一覧に表示される\n\n「すべて」を選ぶと全パスワードが表示されます。",
+      "body": "パスワードをカテゴリごとに整理することで、目的のパスワードをすばやく見つけられます。\n\n【カテゴリの種類】\n- SNS・コミュニティ\n- メール\n- ショッピング\n- 金融・銀行\n- エンタメ・動画\n- 仕事・ビジネス\n- 旅行・交通\n- その他\n\n【カテゴリを設定する手順】\n1. パスワードの登録・編集画面を開く\n2. 「カテゴリ」欄をタップする\n3. 表示された一覧から該当するカテゴリを選ぶ\n4. 「保存」をタップする\n\n【カテゴリで絞り込む手順】\n1. ホーム画面上部のカテゴリフィルタをタップする\n2. 絞り込みたいカテゴリを選ぶ\n3. 選んだカテゴリのパスワードだけが一覧に表示される\n\n「すべて」を選ぶと全パスワードが表示されます。\n\n【カテゴリの並び順を変更する】\n1. カテゴリ一覧画面右上の「並替」をタップする\n2. 各カテゴリの右側に表示されるハンドル（三本線のマーク）をドラッグして順序を入れ替える\n3. 「完了」をタップして確定する\n\n【小カテゴリの並び順を変更する】\n1. カテゴリ一覧画面で、並び替えたい小カテゴリを持つカテゴリの「…」をタップする\n2. 「小カテゴリーを並び替え」をタップする（小カテゴリが2つ以上あるカテゴリのみ表示されます）\n3. ハンドルをドラッグして順序を入れ替える\n4. 「完了」をタップして確定する",
       "related": [
         "gs-add-password",
         "pw-sort",
@@ -184,6 +210,13 @@
         "pw-suggest",
         "pw-attach-image",
         "gs-add-password"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "パスワードを追加する",
+          "route": "tab-home"
+        }
       ]
     },
     {
@@ -207,6 +240,13 @@
         "pw-create",
         "st-generator-settings",
         "sec-passcode"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "自動生成の設定を開く",
+          "route": "settings-generator"
+        }
       ]
     },
     {
@@ -273,6 +313,13 @@
         "wg-setup",
         "wg-usage",
         "pw-sort"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "ホームを開く",
+          "route": "tab-home"
+        }
       ]
     },
     {
@@ -338,6 +385,13 @@
         "sec-lock-timing",
         "sec-forgot-passcode",
         "gs-first-use"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "パスコード設定を開く",
+          "route": "settings-passcode"
+        }
       ]
     },
     {
@@ -360,6 +414,13 @@
         "sec-lock-timing",
         "gs-view-password",
         "tr-biometric-fail"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "セキュリティ設定を開く",
+          "route": "settings-passcode"
+        }
       ]
     },
     {
@@ -382,6 +443,13 @@
         "sec-passcode",
         "sec-biometric",
         "sec-clipboard"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "ロック時間を設定する",
+          "route": "settings-passcode-time"
+        }
       ]
     },
     {
@@ -404,6 +472,13 @@
         "gs-view-password",
         "sec-passcode",
         "sec-biometric"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "クリップボード設定を開く",
+          "route": "settings-passcode-time"
+        }
       ]
     },
     {
@@ -448,6 +523,13 @@
         "bk-device-change",
         "tr-backup-fail",
         "sec-forgot-passcode"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "バックアップ・復元を開く",
+          "route": "settings-backup"
+        }
       ]
     },
     {
@@ -469,6 +551,13 @@
         "bk-device-change",
         "tr-backup-fail",
         "sec-forgot-passcode"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "バックアップ・復元を開く",
+          "route": "settings-backup"
+        }
       ]
     },
     {
@@ -494,6 +583,18 @@
         "bk-icloud",
         "bk-device-change",
         "bk-bluetooth"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "CSVエクスポートを開く",
+          "route": "settings-csv-export"
+        },
+        {
+          "type": "route",
+          "label": "CSVインポートを開く",
+          "route": "settings-csv-import"
+        }
       ]
     },
     {
@@ -515,6 +616,13 @@
         "bk-restore",
         "bk-bluetooth",
         "sec-biometric"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "バックアップ・復元を開く",
+          "route": "settings-backup"
+        }
       ]
     },
     {
@@ -537,6 +645,13 @@
         "bk-device-change",
         "bk-icloud",
         "bk-csv"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "端末間通信を開く",
+          "route": "settings-bluetooth"
+        }
       ]
     },
     {
@@ -560,6 +675,13 @@
         "pr-restore",
         "pr-subscription",
         "pr-ads"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "プレミアムプランを見る",
+          "route": "settings-premium"
+        }
       ]
     },
     {
@@ -582,6 +704,13 @@
         "pr-restore",
         "pr-subscription",
         "pr-trial"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "プレミアムプランを見る",
+          "route": "settings-premium"
+        }
       ]
     },
     {
@@ -604,6 +733,13 @@
         "pr-plans",
         "pr-subscription",
         "tr-purchase-fail"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "購入を復元する",
+          "route": "settings-premium"
+        }
       ]
     },
     {
@@ -665,6 +801,13 @@
         "pr-purchase",
         "pr-plans",
         "pr-subscription"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "プレミアムプランを見る",
+          "route": "settings-premium"
+        }
       ]
     },
     {
@@ -729,6 +872,13 @@
         "wg-setup",
         "wg-usage",
         "pw-favorite"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "ホームを開く",
+          "route": "tab-home"
+        }
       ]
     },
     {
@@ -750,6 +900,13 @@
       "related": [
         "st-dark-mode",
         "pr-plans"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "文字サイズ設定を開く",
+          "route": "settings-font"
+        }
       ]
     },
     {
@@ -792,6 +949,13 @@
       "related": [
         "pw-generate",
         "pw-create"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "生成設定を開く",
+          "route": "settings-generator"
+        }
       ]
     },
     {
@@ -854,6 +1018,13 @@
         "bk-icloud",
         "pw-sort",
         "gs-categories"
+      ],
+      "actions": [
+        {
+          "type": "route",
+          "label": "検索を開く",
+          "route": "tab-search"
+        }
       ]
     },
     {
