@@ -1,11 +1,16 @@
 {
-  "version": 2026071900,
-  "updatedAt": "2026-07-19",
+  "version": 2026072401,
+  "updatedAt": "2026-07-24",
   "categories": [
     {
       "id": "getting-started",
       "title": "はじめに・基本の使い方",
       "description": "パスマネの基本的な使い方を説明します"
+    },
+    {
+      "id": "family-pairing",
+      "title": "もしもの備え（家族への引き継ぎ）",
+      "description": "万一のとき、ご家族へパスワードを安全に引き継ぐための機能です"
     },
     {
       "id": "passwords",
@@ -1121,7 +1126,7 @@
     },
     {
       "id": "fp-overview",
-      "categoryId": "backup",
+      "categoryId": "family-pairing",
       "title": "もしもの備え（家族ペアリング）とは",
       "keywords": [
         "もしもの備え",
@@ -1144,7 +1149,7 @@
     },
     {
       "id": "fp-pairing",
-      "categoryId": "backup",
+      "categoryId": "family-pairing",
       "title": "家族とペアリングする手順",
       "keywords": [
         "もしもの備え",
@@ -1166,7 +1171,7 @@
     },
     {
       "id": "fp-inherit",
-      "categoryId": "backup",
+      "categoryId": "family-pairing",
       "title": "もしもの時の引き継ぎ手順（ご家族向け）",
       "keywords": [
         "もしもの備え",
@@ -1188,7 +1193,7 @@
     },
     {
       "id": "fp-manage",
-      "categoryId": "backup",
+      "categoryId": "family-pairing",
       "title": "もしもの備えの管理（待機期間・解除・カード表示）",
       "keywords": [
         "もしもの備え",
